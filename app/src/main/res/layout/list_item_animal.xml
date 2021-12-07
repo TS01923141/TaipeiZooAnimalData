@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="animalData"
+            type="com.example.taipeizooanimaldata.model.network.AnimalDataEntity" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView_item_animal"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp"
+        android:layout_margin="8dp"
+        android:onClick="@{clickListener}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView_item_animal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintDimensionRatio="3:2"
+                android:scaleType="centerCrop"
+                app:imageFromUrl="@{animalData.a_Pic01_URL}"
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
+
+            <TextView
+                android:id="@+id/textView_item_animal_name"
+                app:layout_constraintTop_toBottomOf="@id/imageView_item_animal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@{animalData.a_Name_Ch}"
+                android:layout_marginTop="16dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginStart="8dp"
+                android:textAppearance="?attr/textAppearanceListItem"
+                tools:text="大熊貓"/>
+
+            <TextView
+                android:id="@+id/textView_item_animal_name_en"
+                app:layout_constraintTop_toBottomOf="@id/textView_item_animal_name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@{animalData.a_Name_En}"
+                android:layout_marginBottom="16dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textAppearance="?attr/textAppearanceListItemSecondary"
+                tools:text="Panda"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
