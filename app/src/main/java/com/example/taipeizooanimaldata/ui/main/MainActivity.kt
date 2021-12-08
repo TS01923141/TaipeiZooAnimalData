@@ -16,23 +16,9 @@ import dagger.hilt.android.AndroidEntryPoint
     PagingDataAdapter
     Navigation
 
-    完成service, api
+    systemBar瀏海改成透明
 
-    完成repository
-    測試
-
-    完成room, database
-    測試
-
-    調整repository
-    測試
-
-    完成viewModel
-    測試
-
-    完成Adapter跟paging的處理
-
-
+    navigation跳到detailActivity
  */
 
 @AndroidEntryPoint
