@@ -1,5 +1,6 @@
 package com.example.taipeizooanimaldata.model.network
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
@@ -35,7 +36,7 @@ data class Result(
 }
 
 @Entity
-//@Parcelize
+@Parcelize
 @JsonClass(generateAdapter = true)
 data class AnimalDataEntity(
     val A_Behavior: String,
@@ -85,7 +86,7 @@ data class AnimalDataEntity(
     @PrimaryKey val _id: String,
     val A_Geo: String,
     val A_Crisis: String
-) {
+) : Parcelable {
     companion object {
         val empty = AnimalDataEntity(
             "",

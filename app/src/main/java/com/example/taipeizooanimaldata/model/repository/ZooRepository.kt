@@ -8,8 +8,10 @@ import com.example.taipeizooanimaldata.model.network.AnimalDataResponse
 import com.example.taipeizooanimaldata.model.network.ZooService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import javax.inject.Inject
+import javax.net.ssl.SSLHandshakeException
 
 class ZooRepository @Inject constructor(private val service: ZooService, private val database: AnimalDatabase) {
     var animalDataEntityList: LiveData<List<AnimalDataEntity>> = database.animalDataDao.getAnimalDataList().asLiveData()
@@ -28,6 +30,12 @@ class ZooRepository @Inject constructor(private val service: ZooService, private
                 null
             }
         } catch (e: UnknownHostException) {
+            e.printStackTrace()
+            null
+        } catch (e: SocketTimeoutException) {
+            e.printStackTrace()
+            null
+        } catch (e: SSLHandshakeException) {
             e.printStackTrace()
             null
         }

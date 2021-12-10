@@ -2,12 +2,13 @@ package com.example.taipeizooanimaldata.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
+import androidx.navigation.findNavController
 import com.example.taipeizooanimaldata.R
 import com.example.taipeizooanimaldata.databinding.ActivityMainBinding
 import com.example.taipeizooanimaldata.model.adapter.AnimalAdapter
 import dagger.hilt.android.AndroidEntryPoint
-
 
 /*
     這次要導入
@@ -16,11 +17,10 @@ import dagger.hilt.android.AndroidEntryPoint
     PagingDataAdapter
     Navigation
 
-    systemBar瀏海改成透明
-
     navigation跳到detailActivity
  */
 
+private const val TAG = "MainActivity"
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
@@ -28,16 +28,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val adapter = AnimalAdapter()
-        binding.recyclerViewMain.adapter = adapter
-
-        with(viewModel) {
-            animalDataList.observe(this@MainActivity, adapter::submitList)
-        }
     }
 
     override fun onResume() {
